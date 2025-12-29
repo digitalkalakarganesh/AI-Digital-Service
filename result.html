@@ -21,10 +21,27 @@
     h1{
       text-align:center;
       color:#38bdf8;
+<p id="status">Analyzing requirements...</p>
+
+<script>
+setTimeout(()=>{
+  document.getElementById("status").innerText =
+  "Analysis complete. System ready to build.";
+}, 2000);
+</script>
+
     }
     ul{
       line-height:1.8;
     }
+<p><strong>AI Analysis:</strong></p>
+<ul>
+  <li>Project complexity: Medium</li>
+  <li>Estimated build time: 20–25 days</li>
+  <li>Automation level: 70%</li>
+  <li>Human intervention: Setup & approval only</li>
+</ul>
+
     .note{
       background:#020617;
       padding:15px;
