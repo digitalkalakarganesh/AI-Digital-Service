@@ -35,13 +35,13 @@
 </head>
 <body>
 
-<form
-  name="client-requirement"
-  method="POST"
-  data-netlify="true"
-  data-netlify-redirect="/result.html"
->
-  <input type="hidden" name="form-name" value="client-requirement">
+<form id="reqForm">
+<script>
+document.getElementById("reqForm").addEventListener("submit", function(e){
+  e.preventDefault();   // page reload रोको
+  window.location.href = "/result.html";
+});
+</script>
 
   <input type="email" name="email" placeholder="Your Email" required>
 
