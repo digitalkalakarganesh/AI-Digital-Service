@@ -1,63 +1,110 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
   <meta charset="UTF-8">
-  <title>Project Requirement Form</title>
+  <title>Project Requirement</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body {
+    body{
+      margin:0;
       font-family: Arial, sans-serif;
-      background: #f1f5f9;
-      padding: 20px;
+      background:#0b1022;
+      color:#ffffff;
     }
-    form {
-      max-width: 500px;
-      margin: auto;
-      background: #ffffff;
-      padding: 20px;
-      border-radius: 10px;
+    .container{
+      max-width:600px;
+      margin:60px auto;
+      background:#0f172a;
+      padding:30px;
+      border-radius:14px;
+      box-shadow:0 0 20px rgba(0,0,0,0.4);
     }
-    h2 {
-      text-align: center;
+    h1{
+      text-align:center;
+      color:#38bdf8;
+      margin-bottom:10px;
     }
-    input, select, textarea, button {
-      width: 100%;
-      margin-top: 10px;
-      padding: 10px;
+    p{
+      text-align:center;
+      color:#cbd5e1;
+      margin-bottom:25px;
+      font-size:14px;
     }
-    button {
-      background: #2563eb;
-      color: #fff;
-      border: none;
-      cursor: pointer;
+    label{
+      display:block;
+      margin-top:15px;
+      margin-bottom:5px;
+      font-size:14px;
+      color:#cbd5e1;
+    }
+    input, select, textarea{
+      width:100%;
+      padding:12px;
+      border-radius:8px;
+      border:1px solid #334155;
+      background:#020617;
+      color:#ffffff;
+      font-size:14px;
+    }
+    textarea{
+      resize:vertical;
+      min-height:90px;
+    }
+    button{
+      margin-top:25px;
+      width:100%;
+      padding:14px;
+      border:none;
+      border-radius:30px;
+      background:#22c55e;
+      color:#000;
+      font-size:16px;
+      cursor:pointer;
+    }
+    button:hover{
+      background:#16a34a;
     }
   </style>
 </head>
+
 <body>
 
-<form id="reqForm">
+<div class="container">
+  <h1>Project Requirement</h1>
+  <p>Tell us what you want to build. AI will analyze it.</p>
+
+  <form id="reqForm">
+    <label>Your Name</label>
+    <input type="text" name="name" placeholder="Enter your name">
+
+    <label>Email</label>
+    <input type="email" name="email" placeholder="Enter your email">
+
+    <label>Project Type</label>
+    <select name="project_type">
+      <option>Website</option>
+      <option>Mobile App</option>
+      <option>Website + App</option>
+      <option>Marketing System</option>
+      <option>Custom Idea</option>
+    </select>
+
+    <label>Required Features</label>
+    <textarea name="features" placeholder="Describe what you want to build"></textarea>
+
+    <label>Any Special Instruction</label>
+    <textarea name="notes" placeholder="Optional"></textarea>
+
+    <button type="submit">Analyze & Continue</button>
+  </form>
+</div>
+
 <script>
 document.getElementById("reqForm").addEventListener("submit", function(e){
-  e.preventDefault();   // page reload रोको
+  e.preventDefault();
   window.location.href = "/result.html";
 });
 </script>
-  <input type="text" name="name" placeholder="Your Name" required>
-  <input type="email" name="email" placeholder="Your Email" required>
-
-  <select name="project_type">
-    <option>Website</option>
-    <option>Mobile App</option>
-    <option>Website + App</option>
-    <option>Marketing Only</option>
-  </select>
-
-  <textarea name="features" placeholder="Required Features" rows="4"></textarea>
-
-  <textarea name="notes" placeholder="Any Special Instruction" rows="3"></textarea>
-
-  <button type="submit">Submit Requirement</button>
-</form>
 
 </body>
 </html>
