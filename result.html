@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>AI Requirement Analysis</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <style>
     body{
       font-family: Arial, sans-serif;
@@ -11,6 +12,7 @@
       color:#ffffff;
       padding:20px;
     }
+
     .box{
       max-width:700px;
       margin:auto;
@@ -18,36 +20,16 @@
       padding:25px;
       border-radius:10px;
     }
+
     h1{
       text-align:center;
       color:#38bdf8;
-<p id="status">Analyzing requirements...</p>
-
-<script>
-setTimeout(()=>{
-  document.getElementById("status").innerText =
-  "Analysis complete. System ready to build.";
-}, 2000);
-</script>
-
     }
+
     ul{
       line-height:1.8;
     }
-<p><strong>AI Analysis:</strong></p>
-<ul>
-  <li>Project complexity: Medium</li>
-  <li>Estimated build time: 20–25 days</li>
-  <li>Automation level: 70%</li>
-  <li>Human intervention: Setup & approval only</li>
-</ul>
 
-    .note{
-      background:#020617;
-      padding:15px;
-      border-left:4px solid #22c55e;
-      margin-top:20px;
-    }
     a{
       color:#22c55e;
       text-decoration:none;
@@ -56,7 +38,27 @@ setTimeout(()=>{
     }
   </style>
 </head>
+
 <body>
+
+<div class="box">
+
+  <h1>AI Requirement Analysis Result</h1>
+
+  <p id="statusText">Analyzing...</p>
+
+  <h3>System Actions:</h3>
+  <ul id="systemActions"></ul>
+
+  <h3>Human Actions Required:</h3>
+  <ul id="humanActions"></ul>
+
+  <h3>Assumptions:</h3>
+  <ul id="assumptions"></ul>
+
+  <a href="index.html">← Back to Home</a>
+
+</div>
 
 <script src="engine/core-engine.js"></script>
 
@@ -73,11 +75,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const realData = JSON.parse(storedData);
   const analysis = CoreEngine.analyzeRequirement(realData);
 
-  // Status
   document.getElementById("statusText").innerHTML =
     "Status: Your project is <span style='color:#22c55e;'>Feasible</span>";
 
-  // System Actions
   const systemList = document.getElementById("systemActions");
   analysis.systemActions.forEach(action => {
     const li = document.createElement("li");
@@ -85,7 +85,6 @@ document.addEventListener("DOMContentLoaded", function () {
     systemList.appendChild(li);
   });
 
-  // Human Actions
   const humanList = document.getElementById("humanActions");
   analysis.humanActions.forEach(action => {
     const li = document.createElement("li");
@@ -93,7 +92,6 @@ document.addEventListener("DOMContentLoaded", function () {
     humanList.appendChild(li);
   });
 
-  // Assumptions
   const assumptionList = document.getElementById("assumptions");
   analysis.assumptions.forEach(item => {
     const li = document.createElement("li");
@@ -103,5 +101,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 </script>
+
 </body>
 </html>
