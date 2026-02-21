@@ -87,5 +87,20 @@ setTimeout(()=>{
   <a href="/">← Back to Home</a>
 </div>
 <script src="engine/core-engine.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    // Demo data (temporary until we connect real form)
+    const demoData = {
+        projectType: "ecommerce",
+        features: "ecommerce seo social chat"
+    };
+
+    const analysis = CoreEngine.analyzeRequirement(demoData);
+
+    console.log("AI Analysis:", analysis);
+
+});
+</script>
 </body>
 </html>
