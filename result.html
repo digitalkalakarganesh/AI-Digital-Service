@@ -47,6 +47,14 @@
 
   <p id="statusText">Analyzing...</p>
 
+  <!-- NEW SECTION -->
+  <h3>Project Analysis:</h3>
+  <ul>
+    <li><strong>Complexity:</strong> <span id="complexity"></span></li>
+    <li><strong>Estimated Timeline:</strong> <span id="timeline"></span></li>
+    <li><strong>Estimated Cost:</strong> <span id="cost"></span></li>
+  </ul>
+
   <h3>System Actions:</h3>
   <ul id="systemActions"></ul>
 
@@ -75,9 +83,16 @@ document.addEventListener("DOMContentLoaded", function () {
   const realData = JSON.parse(storedData);
   const analysis = CoreEngine.analyzeRequirement(realData);
 
+  // Status
   document.getElementById("statusText").innerHTML =
-    "Status: Your project is <span style='color:#22c55e;'>Feasible</span>";
+    "Status: Your project is <span style='color:#22c55e;'>" + analysis.feasibility + "</span>";
 
+  // Complexity Section
+  document.getElementById("complexity").innerText = analysis.complexityLevel;
+  document.getElementById("timeline").innerText = analysis.estimatedDays;
+  document.getElementById("cost").innerText = analysis.estimatedCost;
+
+  // System Actions
   const systemList = document.getElementById("systemActions");
   analysis.systemActions.forEach(action => {
     const li = document.createElement("li");
@@ -85,6 +100,7 @@ document.addEventListener("DOMContentLoaded", function () {
     systemList.appendChild(li);
   });
 
+  // Human Actions
   const humanList = document.getElementById("humanActions");
   analysis.humanActions.forEach(action => {
     const li = document.createElement("li");
@@ -92,6 +108,7 @@ document.addEventListener("DOMContentLoaded", function () {
     humanList.appendChild(li);
   });
 
+  // Assumptions
   const assumptionList = document.getElementById("assumptions");
   analysis.assumptions.forEach(item => {
     const li = document.createElement("li");
