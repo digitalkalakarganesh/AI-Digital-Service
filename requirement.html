@@ -102,9 +102,19 @@
 <script>
 document.getElementById("reqForm").addEventListener("submit", function(e){
   e.preventDefault();
-  window.location.href = "/result.html";
+
+  const formData = {
+    name: document.querySelector("input[name='name']").value,
+    email: document.querySelector("input[name='email']").value,
+    projectType: document.querySelector("select[name='project_type']").value,
+    features: document.querySelector("textarea[name='features']").value,
+    notes: document.querySelector("textarea[name='notes']").value
+  };
+
+  localStorage.setItem("aiRequirementData", JSON.stringify(formData));
+
+  window.location.href = "result.html";
 });
 </script>
-
 </body>
 </html>

@@ -102,5 +102,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 </script>
+<script src="engine/core-engine.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const storedData = localStorage.getItem("aiRequirementData");
+
+  if (!storedData) {
+    console.log("No requirement data found.");
+    return;
+  }
+
+  const realData = JSON.parse(storedData);
+
+  const analysis = CoreEngine.analyzeRequirement(realData);
+
+  console.log("AI Analysis:", analysis);
+
+});
+</script>
 </body>
 </html>
