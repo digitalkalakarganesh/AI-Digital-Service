@@ -1,0 +1,5 @@
+print("helle world")
+print("i am a good treader")
+print("name is mahesh")
+PRINT ("I AM FROM JHANJHARPUR")
+PRINT()
