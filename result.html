@@ -58,50 +58,6 @@ setTimeout(()=>{
 </head>
 <body>
 
-<div class="box">
-  <h1>AI Requirement Analysis Result</h1>
-
-  <p><strong>Status:</strong> Your project is <span style="color:#22c55e;">Feasible</span></p>
-
-  <h3>Suggested System Build:</h3>
-  <ul>
-    <li>Website + Landing Page</li>
-    <li>Optional Mobile App (Web-based first)</li>
-    <li>SEO & Social Media Marketing Automation</li>
-    <li>AI Content & Chat Support</li>
-    <li>Future Upgrade & Feature Toggle Support</li>
-  </ul>
-
-  <h3>AI Suggestions:</h3>
-  <ul>
-    <li>Start with a basic MVP to reduce cost</li>
-    <li>Use free tools for hosting & database</li>
-    <li>Add advanced features step-by-step</li>
-  </ul>
-
-  <div class="note">
-    ⚠️ Some complex features (like crypto, stock trading, heavy AI calling)
-    may require partial manual setup or third-party APIs.
-  </div>
-
-  <a href="/">← Back to Home</a>
-</div>
-<script src="engine/core-engine.js"></script>
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-
-    // Demo data (temporary until we connect real form)
-    const demoData = {
-        projectType: "ecommerce",
-        features: "ecommerce seo social chat"
-    };
-
-    const analysis = CoreEngine.analyzeRequirement(demoData);
-
-    console.log("AI Analysis:", analysis);
-
-});
-</script>
 <script src="engine/core-engine.js"></script>
 
 <script>
@@ -110,15 +66,40 @@ document.addEventListener("DOMContentLoaded", function () {
   const storedData = localStorage.getItem("aiRequirementData");
 
   if (!storedData) {
-    console.log("No requirement data found.");
+    document.getElementById("statusText").innerText = "No requirement data found.";
     return;
   }
 
   const realData = JSON.parse(storedData);
-
   const analysis = CoreEngine.analyzeRequirement(realData);
 
-  console.log("AI Analysis:", analysis);
+  // Status
+  document.getElementById("statusText").innerHTML =
+    "Status: Your project is <span style='color:#22c55e;'>Feasible</span>";
+
+  // System Actions
+  const systemList = document.getElementById("systemActions");
+  analysis.systemActions.forEach(action => {
+    const li = document.createElement("li");
+    li.innerText = action;
+    systemList.appendChild(li);
+  });
+
+  // Human Actions
+  const humanList = document.getElementById("humanActions");
+  analysis.humanActions.forEach(action => {
+    const li = document.createElement("li");
+    li.innerText = action;
+    humanList.appendChild(li);
+  });
+
+  // Assumptions
+  const assumptionList = document.getElementById("assumptions");
+  analysis.assumptions.forEach(item => {
+    const li = document.createElement("li");
+    li.innerText = item;
+    assumptionList.appendChild(li);
+  });
 
 });
 </script>
